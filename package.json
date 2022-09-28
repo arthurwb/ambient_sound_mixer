@@ -1,0 +1,15 @@
+{
+  "name": "ambient_sound_mixer",
+  "version": "1.0.0",
+  "description": "audio mixer for class: Human Computer Interaction",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "W. Brooks Arthur",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
