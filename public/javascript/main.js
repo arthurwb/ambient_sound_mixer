@@ -46,6 +46,9 @@ window.onload = function(e) {
     $('#chatterButton').click(function (e) {
         play('chatter');
     });
+    $('#jensynButton').click(function (e) {
+        play('jensyn');
+    });
     $('#stop').click(function(e) {
         play('stop');
     })

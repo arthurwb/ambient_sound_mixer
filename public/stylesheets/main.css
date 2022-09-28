@@ -1,10 +1,15 @@
 /* general tags */
-h1 {
-    color: red;
-    text-align: center;
+body {
 }
 
 /* Class tags */
+.header {
+    color: rgb(70, 127, 145);
+    text-align: center;
+    font-family: "Brush Script MT";
+    font-size: 50px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -22,7 +27,7 @@ h1 {
     text-align: center;
 }
 .grid-item:hover {
-    background-color: rgba(198, 198, 198, 0.771);
+    background-color: rgba(225, 225, 225, 0.771);
 }
 
 .playing {

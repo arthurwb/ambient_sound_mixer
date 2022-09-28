@@ -9,7 +9,7 @@ const router = express.Router()
 app.use(express.static(path.join(__dirname, 'public')));
 
 //  router for the index file
-app.route('/index')
+app.route('/')
 .get((req, res) => {
     res.sendFile(path.join(__dirname, '/client/index.html'));
     console.log("/index get recieved");
