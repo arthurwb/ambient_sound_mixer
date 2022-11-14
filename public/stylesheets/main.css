@@ -1,35 +1,110 @@
+/* font tags */
+@font-face {
+    font-family: exo;
+    src: url(Exo-Light.ttf);
+  }
+  @font-face {
+    font-family: exoThin;
+    src: url(Exo-Thin.ttf);
+  }
+
 /* general tags */
 body {
+    padding: 0%;
+    margin: 0%;
 }
 
 /* Class tags */
-.header {
-    color: rgb(70, 127, 145);
-    text-align: center;
-    font-family: "Brush Script MT";
-    font-size: 50px;
+.header-top {
+    background: #C285F2;
+    padding-top: 0;
 }
 
-.grid-container {
+.header-top-text {
+    color: rgb(255, 255, 255);
+    font-family: 'exo';
+    letter-spacing: 20px;
+    text-indent: 20px;
+    text-align: center;
+    font-size: 50px;
+    margin: 0px;
+}
+
+.header-bottom {
+    background: #D18AE3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.header-bottom-text {
+    color: rgb(255, 255, 255);
+    font-family: 'exoThin';
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-indent: 2px;
+    text-align: center;
+    margin: 0;
+}
+
+.audio-content {
+    position: absolute;
+    width: 1150px;
+    height: relative;
+    left: 60px;
+    top: 120px;
+
+    text-align: center;
+
+    padding: 5px;
+    padding-left: 10px;
+
+    background: #D9D9D9;
+    border-radius: 40px;
+
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: #aed9b6;
-    padding: 10px;
 }
 
-.grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    border-radius: 25px;
-    padding: 20px;
-    margin: 10px;
+.audio-box {
+    background: #8BD89C;
+    border-radius: 20px;
+
+    width: 300px;
+    margin: 5px;
+    padding: 10px;
     font-size: 30px;
     text-align: center;
 }
-.grid-item:hover {
-    background-color: rgba(225, 225, 225, 0.771);
+.audio-box:hover {
+    background: #81c791;
 }
 
-.playing {
-    color: red;
+.playing-audio-box {
+    background: #8BD89C;
+    border-radius: 20px;
+
+    width: 200px;
+    margin: 5px;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+.playing-audio-box:hover {
+    background: #81c791;
+}
+
+.playing-audio {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    right: 60px;
+    top: 120px;
+
+    text-align: center;
+
+    padding: 5px;
+    padding-left: 10px;
+
+    background: #D9D9D9;
+    border-radius: 40px;
 }
