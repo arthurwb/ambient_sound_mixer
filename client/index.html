@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>[WIP] Ambient Sound Mixer</title>
+        <script src="https://kit.fontawesome.com/b481b1a2ec.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
     </head>
     <body>
@@ -16,30 +17,29 @@
         </div>
         <div class="audio-content">
             <div class="column">
-                <button class="audio-box" id="rainButton">rain</button>
+                <button class="audio-box" id="rainButton"><i id="rainPlayIcon" class="play-icon fa-solid fa-play"></i> rain</button>
+                <button class="audio-box" id=""><i ></i>TestButton</button>
+                <button class="audio-box">sample</button>
+            </div>
+            <div class="column">
+                <button class="audio-box" id="chatterButton"><i id="chatterPlayIcon" class="play-icon fa-solid fa-play"></i>  chatter</button>
                 <button class="audio-box">sample</button>
                 <button class="audio-box">sample</button>
             </div>
             <div class="column">
-                <button class="audio-box">sample</button>
-                <button class="audio-box">sample</button>
-                <button class="audio-box">sample</button>
-            </div>
-            <div class="column">
-                <button class="audio-box">sample</button>
+                <button class="audio-box" id="jensynButton"><i id="jensynPlayIcon" class="play-icon fa-solid fa-play"></i>  jensyn</button>
                 <button class="audio-box">sample</button>
                 <button class="audio-box">sample</button>
             </div>
         </div>
         <div class="playing-audio">
-            <div class="column">
-                <button class="playing-audio-box">sample</button>
-                <button class="playing-audio-box">sample</button>
-                <button class="playing-audio-box">sample</button>
+            <div class="column" id="playingAudioColumn">
+                <button class="stop-box" id="stop"><i class="fa-solid fa-stop"></i></button>
             </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="/module/howler/dist/howler.js"></script>
         <script src="/javascript/main.js"></script>
     </body>
 </html>

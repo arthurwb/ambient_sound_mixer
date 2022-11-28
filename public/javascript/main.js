@@ -1,47 +1,60 @@
 console.log('js file loaded');
-var audio;
-var audioArray = [];
-/*
-    [0][0]
-    first variable = name of audio being played
-    second variable = 0 if not playing, 1 if playing
-*/
-var optionArray = [
+// array of audio objects
+const audioObjects = [
     ['rain', 0],
     ['chatter', 0],
     ['jensyn', 0]
-];
+]
+// hower audio objects
+var rain = new Howl({
+    src : ['/sounds/rain.mp3'],
+});
+var chatter = new Howl({
+    src : ['/sounds/chatter.mp3']
+});
+var jensyn = new Howl({
+    src : ['sounds/jensyn.mp3'],
+});
 
-function play(input) {
-    if (input == 'stop') {
+// audio player
+function playAudio(input) {
+    if (input == "stop") {
         window.location.reload();
     }
+    for (var i = 0; i < audioObjects.length; i++) {
+        console.log(audioObjects[i])
+        if (audioObjects[i][0] == input) {
+            if (audioObjects[i][1] == 1) {
+                // stop the playing audio
+                console.log("stopping audio: " + input);
+                audioObjects[i][1] = 0;
+                eval(input).stop();
 
-    for (var i = 0; i <= 1; i++) {
-        if (optionArray[i][0] == input) {   //  if audio is already playing, reset the window
-            if (optionArray[i][1] == 1) {
-                window.location.reload();
+                // delete the element from the playing bar
+                $('#' + input + 'PlayingButton').remove();
+
+                // change stop icon to play icon
+                $("#" + input + "PlayIcon").addClass("fa-play").removeClass("fa-stop");
+            } else {
+                // play the audio
+                console.log("playing audio: " + input);
+                audioObjects[i][1] = 1;
+                eval(input).play();
+
+                // add the audio to the playing bar
+                var playingAudio = $("<button class='audio-box' id='" + input + "PlayingButton' onclick='play(`" + input + "`)'><i class='play-icon fa-solid fa-stop'></i> " + input + "</button>");
+                $('#playingAudioColumn').append(playingAudio);
+
+                // change play icon to stop icon
+                $("#" + input + "PlayIcon").addClass("fa-stop").removeClass("fa-play");
             }
         }
     }
+    console.log("\n");
+}
 
-    audio = new Audio('/sounds/' + input + '.mp3');
-    audio.loop = true;
-    audio.play();
-    audioArray.push(' ' + input);
-
-    $('#' + input + 'Button').text('PLAYING');
-    $('#' + input + 'Button').addClass('playing');
-
-    console.log('Now playing:' + audioArray);
-
-    $('#audioPlaying').html('<div class="">Now playing:</div>' + '<div>' + audioArray + '</div>');
-
-    for (var i = 0; i <= 1; i++) {
-        if (optionArray[i][0] == input) {   //  when button is clicked, audio is set to being played
-            optionArray[i][1] = 1;
-        }
-    }
+function play(input) {
+    playAudio(input);
 }
 
 //  add all on click functions here
@@ -51,12 +64,18 @@ window.onload = function(e) {
     $('#rainButton').click(function (e) {
         play('rain');
     });
+    $('#rainPlayingButton').click(function (e) {
+        play('rain');
+    });
     //  play chatter sounds
     $('#chatterButton').click(function (e) {
         play('chatter');
     });
     //  play jesyn sounds
     $('#jensynButton').click(function (e) {
+        play('jensyn');
+    });
+    $('#testButton').click(function (e) {
         play('jensyn');
     });
     //  stop audio (reload page)
