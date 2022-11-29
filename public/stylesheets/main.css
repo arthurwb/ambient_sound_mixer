@@ -50,6 +50,11 @@ body {
     margin: 0;
 }
 
+/* containers */
+.column {
+    width: 350px;
+}
+
 .audio-content {
     position: absolute;
     width: 70%;
@@ -59,61 +64,13 @@ body {
 
     text-align: center;
 
-    padding: 5px;
-    padding-left: 10px;
+    padding: 20px;
 
     background: #eeeeee;
     border-radius: 40px;
 
     display: grid;
     grid-template-columns: auto auto auto;
-}
-
-.play-icon {
-    float: left;
-    margin-right: 10%;
-}
-
-.audio-box {
-    background: #8BD89C;
-    border-radius: 20px;
-
-    width: 80%;
-    margin: 5px;
-    padding: 10px;
-    padding-left: 30px;
-
-    font-family: 'alegreya';
-    font-size: 30px;
-    text-align: left;
-}
-.audio-box:hover {
-    background: #81c791;
-}
-
-.stop-box {
-    background: #d88b8b;
-    border-radius: 20px;
-
-    width: 60%;
-    margin: 5px;
-    padding: 10px;
-    font-size: 30px;
-    text-align: center;
-}
-
-.playing-audio-box {
-    background: #8BD89C;
-    border-radius: 20px;
-
-    width: 80%;
-    margin: 5px;
-    padding: 10px;
-    font-size: 30px;
-    text-align: center;
-}
-.playing-audio-box:hover {
-    background: #81c791;
 }
 
 .playing-audio {
@@ -129,6 +86,93 @@ body {
     padding: 5px;
     padding-left: 10px;
 
-    background: #D9D9D9;
+    background: #eeeeee;
     border-radius: 40px;
+}
+
+/* icons */
+.play-icon {
+    float: left;
+
+    margin-top: 1%;
+    margin-right: 10%;
+}
+
+/* audio player buttons */
+.audio-box {
+    background: #8BD89C;
+
+    border: none;
+    border-radius: 20px;
+
+    display: inline-block;
+
+    width: 350px;
+    margin: 5px;
+    padding: 10px;
+    padding-left: 30px;
+
+    font-family: 'alegreya';
+    font-size: 30px;
+    text-align: left;
+} .audio-box:hover {
+    background: #81c791;
+}
+
+.playing-audio-box {
+    background: #8B93D8;
+
+    border: none;
+    border-radius: 20px;
+
+    display: inline-block;
+
+    width: 200px;
+    margin: 5px;
+    padding: 10px;
+    padding-left: 30px;
+
+    font-family: 'alegreya';
+    font-size: 30px;
+    text-align: left;
+} .playing-audio-box:hover {
+    background: #7e85c5;
+}
+
+.stop-box {
+    background: #d88b8b;
+
+    border: none;
+    border-radius: 20px;
+
+    width: 150px;
+    margin: 5px;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+} .stop-box:hover {
+    background: #c37d7d;
+}
+
+.dropdown-box {
+    background: #d985f2;
+    width: 300px;
+} .dropdown-box:hover {
+    background: #c778df;
+}
+
+/* MISC */
+.volume-button {
+    background: white;
+
+    border: none;
+    border-radius: 20px;
+
+    display: inline-block;
+
+    width: 20px;
+    height: inherit;
+    margin: 5px;
+    padding: 10px;
+    padding-left: 30px;
 }
