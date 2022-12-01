@@ -14,7 +14,14 @@
             <h1 class="header-top-text">DASM</h1>
         </div>
         <div class="header-bottom">
-            <h2 class="header-bottom-text">SOUND MIXER</h2>
+            <h2 class="header-bottom-text">
+                <form class="login-form" action="/" method="post">
+                    <input type="text" name="user" id="user" placeholder="email"/>
+                    <input type="text" name="password" id="password" placeholder="password" />
+                    <input type="submit" value="Submit">
+                </form>
+                SOUND MIXER
+            </h2>
         </div>
         <div class="audio-content">
             <div class="column">
@@ -24,8 +31,6 @@
                         <i id="rainPlayIcon" class="play-icon fa-solid fa-play"></i>
                         rainButton
                     </button>
-                    <button class="audio-box" id=""><i ></i>TestButton</button>
-                    <button class="audio-box">sample</button>
                 </div>
             </div>
             <div class="column">
@@ -42,14 +47,11 @@
                         <i id="jensynPlayIcon" class="play-icon fa-solid fa-play"></i>
                         jensyn
                     </button>
-                    <button class="audio-box">sample</button>
                 </div>
             </div>
             <div class="column">
                 <button class="dropdown-box audio-box" id="dropdown3"><i class="play-icon fa-solid fa-caret-down"></i> sample dropdown</button>
                 <div class="column" id="column3" style="display: none;">
-                    <button class="audio-box" id=""><i ></i>TestButton</button>
-                    <button class="audio-box">sample</button>
                 </div>
             </div>
         </div>

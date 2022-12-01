@@ -19,6 +19,7 @@ body {
 }
 
 /* Class tags */
+/* Header Section */
 .header-top {
     background: #C285F2;
     padding-top: 0;
@@ -48,6 +49,11 @@ body {
     text-indent: 2px;
     text-align: center;
     margin: 0;
+}
+
+.login-form {
+    float: left;
+    margin-bottom: 0;
 }
 
 /* containers */

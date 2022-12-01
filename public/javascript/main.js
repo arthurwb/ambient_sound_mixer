@@ -50,9 +50,9 @@ function playAudio(input) {
                 var playingAudio = $("<div id='" + input + "PlayingDiv'><button class='playing-audio-box' id='" + input + "PlayingButton' onclick='play(`" + input + "`)'><i class='play-icon fa-solid fa-stop'></i> " + input + "</button></div>");
                 $('#playingAudioColumn').append(playingAudio);
 
-                // add volume bars
-                var volumeBar = $("<button class='volume-button'></button>")
-                $("#" + input + "PlayingDiv").append(volumeBar);
+                // TODO: add volume bars
+                // var volumeBar = $("<button class='volume-button'></button>")
+                // $("#" + input + "PlayingDiv").append(volumeBar);
 
                 // change play icon to stop icon
                 $("#" + input + "PlayIcon").addClass("fa-stop").removeClass("fa-play");
