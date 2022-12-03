@@ -14,8 +14,13 @@
 
 /* general tags */
 body {
+    font-family: 'alegreya';
     padding: 0%;
     margin: 0%;
+}
+
+.center {
+    text-align: center;
 }
 
 /* Class tags */
@@ -51,9 +56,50 @@ body {
     margin: 0;
 }
 
+/* forms */
 .login-form {
     float: left;
     margin-bottom: 0;
+}
+
+.new-user-form {
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    text-align: left;
+}
+
+.form-text {
+    border: none;
+    border-radius: 10px;
+    background-color: #f5b6fb;
+
+    font-size: 20px;
+    font-family: 'alegreya';
+
+    width: 100%;
+    
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.form-submit {
+    border: none;
+    border-radius: 10px;
+
+    background-color: #8BD89C;
+
+    font-size: 20px;
+    
+    padding: 5px;
+    margin: auto;
+    margin-top: 5px;
+
+    width: 100px;
+
+    cursor: pointer;
+} .form-submit:hover {
+    background-color: #7cc08a;
 }
 
 /* containers */
@@ -97,6 +143,11 @@ body {
 }
 
 /* icons */
+.icon {
+    float: right;
+    margin-right: 5%;
+}
+
 .play-icon {
     float: left;
 

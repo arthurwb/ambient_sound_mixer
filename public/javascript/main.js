@@ -103,7 +103,7 @@ window.onload = function(e) {
         play('stop');
     })
 
-    // non audio buttons
+    // dropdowns
     $('#dropdown1').click(function (e) { 
         dropdown('column1');
     });
@@ -112,5 +112,13 @@ window.onload = function(e) {
     });
     $('#dropdown3').click(function (e) { 
         dropdown('column3');
+    });
+
+    // buttons
+    $('#indexButton').click(function (e) { 
+        location.href = './';
+    });
+    $('#getURL').click(function (e) { 
+        console.log(window.location.href);
     });
 }
