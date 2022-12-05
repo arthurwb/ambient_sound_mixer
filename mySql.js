@@ -50,7 +50,7 @@ function databaseInsert(email, loginPassword, res) {
     });
 }
 
-function databaseCheck(email) {
+function databaseCheck(email, res, req) {
 
     con.getConnection(function(err, connection) {
         if (err) throw err;
@@ -71,18 +71,24 @@ function databaseCheck(email) {
             });
 
             if (email == row.Email) {
-                return true;
+                console.log("true");
+                res.locals.email = email
+                res.render('\index.ejs');
             } else {
-                return false
+                console.log("false");
+                res.render('\index.ejs');
             }
         })
     })
 }
 
 function login(email, password, res, req) {
-    if (databaseCheck(email)) {
-        req.session.login = email;
-    }
+    databaseCheck(email, res, req);
+    // if (databaseCheck(email) == true) {
+    //     console.log("database has been checked");
+    //     req.session.login = email;
+    // }
+    // res.rendere('\index.ejs');
 }
 
 module.exports = {databaseInsert, databaseCheck, login};
