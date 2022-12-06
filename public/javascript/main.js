@@ -26,11 +26,12 @@ function stopAudio(input) {
             eval(audioObjects[i][0]).stop();
 
             // delete the element from the playing bar
-            $('#' + audioObjects[i][0] + 'PlayingButton').remove();
+            $(`#${audioObjects[i][0]}PlayingButton`).remove();
+            $(`#${audioObjects[i][0]}PlayingDiv`).remove();
 
             // change stop icon to play icon
-            $("#" + audioObjects[i][0] + "PlayIcon").addClass("fa-play").removeClass("fa-stop");
-            $("#" + audioObjects[i][0] + "Button").addClass("audio-box").removeClass("playing-audio-box");
+            $(`#${audioObjects[i][0]}PlayIcon`).addClass("fa-play").removeClass("fa-stop");
+            $(`#${audioObjects[i][0]}Button`).addClass("audio-box").removeClass("playing-audio-box");
         }
     }
 }
@@ -47,11 +48,12 @@ function playAudio(input) {
                 eval(input).stop();
 
                 // delete the element from the playing bar
-                $('#' + input + 'PlayingButton').remove();
+                $(`#${input}PlayingButton`).remove();
+                $(`#${input}PlayingDiv`).remove();
 
                 // change stop icon to play icon
-                $("#" + input + "PlayIcon").addClass("fa-play").removeClass("fa-stop");
-                $("#" + input + "Button").addClass("audio-box").removeClass("playing-audio-box");
+                $(`#${input}PlayIcon`).addClass("fa-play").removeClass("fa-stop");
+                $(`#${input}Button`).addClass("audio-box").removeClass("playing-audio-box");
             } else {
                 // play the audio
                 console.log("playing audio: " + input);
@@ -59,17 +61,17 @@ function playAudio(input) {
                 eval(input).play();
 
                 // add the audio to the playing bar
-                var playingAudio = $("<div id='" + input + "PlayingDiv'><button class='playing-audio-box' id='" + input + "PlayingButton' onclick='play(`" + input + "`)'><i class='play-icon fa-solid fa-stop'></i> " + input + "</button></div>");
+                var playingAudio = $(`<div id='${input}PlayingDiv' class='playing-row'><button class='playing-audio-box' id='${input}PlayingButton' onclick='play("${input}")'><i class='play-icon fa-solid fa-stop'></i> ${input}</button></div>`);
                 $('#playingAudioColumn').append(playingAudio);
 
                 // TODO: add volume bars
-                // var volumeBar = $("<button class='volume-button'></button>")
-                // $("#" + input + "PlayingDiv").append(volumeBar);
+                var volumeBar = $(`<button id='${input}VolumeBar' class='volume-button'>&nbsp;</button>`)
+                $("#" + input + "PlayingDiv").append(volumeBar);
 
                 // change play icon to stop icon
-                $("#" + input + "PlayIcon").addClass("fa-stop").removeClass("fa-play");
-                $("#" + input + "Button").addClass("playing-audio-box").removeClass("audio-box");
-                $("#" + input + "Button").css('width', '350px');
+                $(`#${input}PlayIcon`).addClass("fa-stop").removeClass("fa-play");
+                $(`#${input}Button`).addClass("playing-audio-box").removeClass("audio-box");
+                $(`#${input}Button`).css('width', '350px');
             }
         }
     }

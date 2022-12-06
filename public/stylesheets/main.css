@@ -220,16 +220,23 @@ body {
 
 /* MISC */
 .volume-button {
-    background: white;
+    background: #9ba1d8;
 
     border: none;
     border-radius: 20px;
 
     display: inline-block;
 
-    width: 20px;
-    height: inherit;
+    width: 0px;
+
     margin: 5px;
     padding: 10px;
-    padding-left: 30px;
+
+    font-size: 30px;
+} .volume-button:hover {
+    background: #878dc5;
+}
+
+.playing-row {
+    /* add playing row size so that the volume button will fit */
 }
