@@ -16,15 +16,27 @@ var jensyn = new Howl({
     src : ['sounds/jensyn.mp3'],
 });
 
+//audio stopper
+function stopAudio(input) {
+    for (let i = 0; i < audioObjects.length; i++) {
+        if (audioObjects[i][1] == 1) {
+            // stop the playing audio
+            console.log("stopping audio: " + audioObjects[i][0]);
+            audioObjects[i][1] = 0;
+            eval(audioObjects[i][0]).stop();
+
+            // delete the element from the playing bar
+            $('#' + audioObjects[i][0] + 'PlayingButton').remove();
+
+            // change stop icon to play icon
+            $("#" + audioObjects[i][0] + "PlayIcon").addClass("fa-play").removeClass("fa-stop");
+            $("#" + audioObjects[i][0] + "Button").addClass("audio-box").removeClass("playing-audio-box");
+        }
+    }
+}
+
 // audio player
 function playAudio(input) {
-    if (input == "stop") {
-        /*
-            TODO: change to a loop to use howler to stop all the audio
-                reloading the page closes all of the dropdowns and the page reloading is kinda weird
-        */
-        window.location.reload();
-    }
     for (var i = 0; i < audioObjects.length; i++) {
         console.log(audioObjects[i])
         if (audioObjects[i][0] == input) {
@@ -65,7 +77,11 @@ function playAudio(input) {
 }
 
 function play(input) {
-    playAudio(input);
+    if (input == "stop") {
+        stopAudio(input);
+    } else {
+        playAudio(input);
+    }
 }
 
 function dropdown(column) {
