@@ -1,4 +1,6 @@
 var express = require('express');
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 var app = express();
 
 const path = require('path');
@@ -11,32 +13,29 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs')
 
+app.use(cookieParser());
+
+app.use(session({
+    secret: "key",
+    saveUninitialized: true,
+    resave: true
+}));
+
 var databaseAlter = require('./mySql');
 
 module.exports = function(app) {
+
+    //index route
     app.route('/')
     .get((req, res) => {
-        // res.sendFile(path.join(__dirname, '/client/index.html'));
-        res.locals.email = 'none';
-        res.render('\index.ejs');
+        res.render('\index.ejs', {user: req.session.email});
         console.log("index login session");
         console.log("/index get recieved");
     })
     .post((req, res) => {
         console.log("/index post recieved");
         databaseAlter.login(req.body.user, req.body.password, res, req);
-        // res.sendFile(path.join(__dirname, '/client/index.html'));
-        res.render('\newLogin.ejs');
-        /*
-        TODO:
-            create old user login.
-
-            create handler for if the username is already in use.
-
-            if the username is new, ask the user if they would like to create a new account before actually creating it.
-            
-            if the username and password are both already in use
-        */
+        res.redirect('/');
         
         console.log('/index post recieved');
     })
@@ -44,19 +43,20 @@ module.exports = function(app) {
         console.log('/index put recieved');
     })
 
-    app.route('/newLogin')
+    // login route
+    app.route('/login')
     .get((req, res) => {
-        // res.sendFile(path.join(__dirname, '/client/newLogin.html'));
+        console.log("/login get recieved");
         res.render('\login.ejs');
-        console.log("User logged in = " + req.session.login);
-        console.log("/newLogin get recieved");
+        console.log("User logged in = " + req.session.email);
     })
     .post((req, res) => {
-        console.log("/newLogin post recieved");
-        databaseAlter.databaseCheck(req.body.user, res, req);
+        console.log("/login post recieved");
+        console.log(databaseAlter.databaseCheck(req.body.user, req.body.password, res, req));
+        console.log('end of post');
     })
     .put((req, res) => {
-        console.log("/newLogin put recieved");
+        console.log("/login put recieved");
     })
     
 }

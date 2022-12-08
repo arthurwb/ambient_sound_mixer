@@ -1,4 +1,7 @@
+const { render } = require('ejs');
 var mysql = require('mysql'); 
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 const path = require('path');
 
@@ -9,12 +12,6 @@ var sqlQuitFlag;
 var hostName = "127.0.0.1";
 var userName = "root";
 var databaseName = "test";
-var con = mysql.createConnection({
-    host: hostName,
-    user: userName,
-    password: "",
-    database: databaseName
-});
 
 var con = mysql.createPool({
     host: hostName,
@@ -50,7 +47,7 @@ function databaseInsert(email, loginPassword, res) {
     });
 }
 
-function databaseCheck(email, res, req) {
+function databaseCheck(email, password, res, req) {
 
     con.getConnection(function(err, connection) {
         if (err) throw err;
@@ -58,37 +55,30 @@ function databaseCheck(email, res, req) {
         let userArray = email.split("@");
         let name = userArray[0];
 
-        var checkSql = "SELECT * FROM `user` WHERE Email = '" + email + "'"
+        console.log('email ' + email + ', password ' + password);
+        var checkSql = "SELECT * FROM `user` WHERE Email = '" + email + "' AND Password = '" + password + "'";
 
         con.query(checkSql, function (err, result) {
-            connection.release();
-            if (err) throw err;
-
-            var row
-
-            Object.keys(result).forEach(function(key) {
-                row = result[key];
-            });
-
-            if (email == row.Email) {
-                console.log("true");
-                res.locals.email = email
-                res.render('\index.ejs');
+            if (err) {
+                req.session.email = 'not logged in';
+                console.log('user does not exist in database');
+            }
+            if (result[0].Email == email && result[0].Password == password) {
+                req.session.email = email;
+                console.log('return true');
+                res.render('\index.ejs', {user: req.session.email});
             } else {
-                console.log("false");
-                res.render('\index.ejs');
+                req.session.email = 'not logged in';
+                res.render('\login.ejs', {user: req.session.email});
             }
         })
+        connection.release();
     })
+    console.log('end of databaseCheck');
 }
 
 function login(email, password, res, req) {
-    databaseCheck(email, res, req);
-    // if (databaseCheck(email) == true) {
-    //     console.log("database has been checked");
-    //     req.session.login = email;
-    // }
-    // res.rendere('\index.ejs');
+    databaseCheck(email, password, res, req);
 }
 
 module.exports = {databaseInsert, databaseCheck, login};

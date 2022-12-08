@@ -19,8 +19,20 @@ body {
     margin: 0%;
 }
 
+h2 {
+    margin: 0;
+}
+
 .center {
     text-align: center;
+}
+
+.display {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
 }
 
 /* Class tags */
@@ -51,9 +63,12 @@ body {
     font-family: 'exoThin';
     font-size: 15px;
     letter-spacing: 2px;
+
+    margin: 0;
+    margin-right: 170px;
+
     text-indent: 2px;
     text-align: center;
-    margin: 0;
 }
 
 /* forms */
@@ -117,10 +132,13 @@ body {
     text-align: center;
 
     padding: 20px;
+    padding-top: 0;
 
     background: #eeeeee;
     border-radius: 40px;
+}
 
+.audio-grid {
     display: grid;
     grid-template-columns: auto auto auto;
 }
@@ -184,7 +202,7 @@ body {
 
     display: inline-block;
 
-    width: 200px;
+    width: 170px;
     margin: 5px;
     padding: 10px;
     padding-left: 30px;
@@ -207,6 +225,8 @@ body {
     padding: 10px;
     font-size: 30px;
     text-align: center;
+
+    left: 50%;
 } .stop-box:hover {
     background: #c37d7d;
 }
@@ -218,25 +238,53 @@ body {
     background: #c778df;
 }
 
-/* MISC */
+/* volume buttons */
 .volume-button {
-    background: #9ba1d8;
+    background: #8bbed8;
 
     border: none;
     border-radius: 20px;
 
-    display: inline-block;
 
-    width: 0px;
+    width: 35px;
+    height: 35px;
 
-    margin: 5px;
-    padding: 10px;
+    padding-top: 3px;
 
-    font-size: 30px;
+    font-family: 'alegreya';
+    font-size: 20px;
+    text-align: left;
 } .volume-button:hover {
-    background: #878dc5;
+    background: #7ba8bf;
 }
 
-.playing-row {
-    /* add playing row size so that the volume button will fit */
+.volume-clicked {
+    background: #7ba8bf;
+} .volume-clicked:hover {
+    background: #8bbed8; 
+}
+
+/* MISC */
+.new-page-button {
+    border: none;
+    border-radius: 10px;
+
+    background-color: #8BD89C;
+
+    float: left;
+
+    padding: 5px;
+    margin-top: -2px;
+    margin-left: 65px;
+
+    width: 105px;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-decoration: underline;
+
+    cursor: pointer;
+} .new-page-button:hover {
+    background: #81c791;
 }

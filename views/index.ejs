@@ -14,60 +14,65 @@
             <h1 class="header-top-text">DASM</h1>
         </div>
         <div class="header-bottom">
+            <button class="new-page-button" id="loginButton" href="/login">Login</button>
+            <div style="float: left; margin-left: 20px;">
+                <% if (typeof user != "undefined") { %>
+                    <%=user %>
+                <% } %>
+            </div>
             <h2 class="header-bottom-text">
-                <form class="login-form" action="/" method="post">
-                    <input type="text" name="user" id="user" placeholder="email"/>
-                    <input type="text" name="password" id="password" placeholder="password" />
-                    <input type="submit" value="Submit">
-                </form>
-                <a href="/newLogin">new login page</a>
                 SOUND MIXER
-                <%= email %>
             </h2>
         </div>
-        <button id="getURL">get url</button>
         <div class="audio-content">
-            <div class="column">
-                <button class="dropdown-box audio-box" id="dropdown1"><i class="play-icon fa-solid fa-caret-down"></i>
-                    &nbsp;Weather
-                    <i class="icon fa-solid fa-cloud-rain"></i>
-                </button>
-                <div class="column" id="column1" style="display: none;">
-                    <button class="audio-box" id="rainButton">
-                        <i id="rainPlayIcon" class="play-icon fa-solid fa-play"></i>
-                        rainButton
+            <h2>Audio</h2>
+            <div class="audio-grid">
+                <div class="column">
+                    <button class="dropdown-box audio-box" id="dropdown1">
+                        <i class="play-icon fa-solid fa-caret-right" id="dropdownIcon1"></i>
+                        Weather
+                        <i class="icon fa-solid fa-cloud-rain"></i>
                     </button>
+                    <div class="column" id="column1" style="display: none;">
+                        <button class="audio-box" id="rainButton">
+                            <i id="rainPlayIcon" class="play-icon fa-solid fa-play"></i>
+                            rainButton
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <button class="dropdown-box audio-box" id="dropdown2">
-                    <i class="play-icon fa-solid fa-caret-down"></i> 
-                    &nbsp;People
-                    <i class="icon fa-solid fa-comments"></i>
-                </button>
-                <div class="column" id="column2" style="display: none;">
-                    <button class="audio-box" id="chatterButton">
-                        <i id="chatterPlayIcon" class="play-icon fa-solid fa-play"></i> 
-                        chatter
+                <div class="column">
+                    <button class="dropdown-box audio-box" id="dropdown2">
+                        <i class="play-icon fa-solid fa-caret-right" id="dropdownIcon2"></i> 
+                        &nbsp;People
+                        <i class="icon fa-solid fa-comments"></i>
                     </button>
-                    <button class="audio-box" id="jensynButton">
-                        <i id="jensynPlayIcon" class="play-icon fa-solid fa-play"></i>
-                        jensyn
-                    </button>
+                    <div class="column" id="column2" style="display: none;">
+                        <button class="audio-box" id="chatterButton">
+                            <i id="chatterPlayIcon" class="play-icon fa-solid fa-play"></i> 
+                            chatter
+                        </button>
+                        <button class="audio-box" id="jensynButton">
+                            <i id="jensynPlayIcon" class="play-icon fa-solid fa-play"></i>
+                            jensyn
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <button class="dropdown-box audio-box" id="dropdown3">
-                    <i class="play-icon fa-solid fa-caret-down"></i>
-                    &nbsp;Sample
-                </button>
-                <div class="column" id="column3" style="display: none;">
+                <div class="column">
+                    <button class="dropdown-box audio-box" id="dropdown3">
+                        <i class="play-icon fa-solid fa-caret-right" id="dropdownIcon3"></i>
+                        &nbsp;Sample
+                    </button>
+                    <div class="column" id="column3" style="display: none;">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="playing-audio">
+            <h2>Playing Audio</h2>
             <div id="playingAudioColumn">
-                <button class="stop-box" id="stop"><i class="fa-solid fa-stop"></i></button>
+                <div class="center">
+                    <button class="stop-box hide" id="stop"><i class="fa-solid fa-stop"></i></button>
+                </div>
             </div>
         </div>
 

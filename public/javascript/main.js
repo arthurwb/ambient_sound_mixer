@@ -8,22 +8,34 @@ const audioObjects = [
 // howler audio objects
 var rain = new Howl({
     src : ['/sounds/rain.mp3'],
+    loop : true,
+    volume : 0.5
 });
 var chatter = new Howl({
-    src : ['/sounds/chatter.mp3']
+    src : ['/sounds/chatter.mp3'],
+    onend: function() {
+        sound.play();
+    },
+    volume : 0.5
 });
 var jensyn = new Howl({
     src : ['sounds/jensyn.mp3'],
+    loop : true,
+    volume : 0.5
 });
 
 //audio stopper
 function stopAudio(input) {
     for (let i = 0; i < audioObjects.length; i++) {
         if (audioObjects[i][1] == 1) {
-            // stop the playing audio
+            // stop the playing audio and reset the volume
             console.log("stopping audio: " + audioObjects[i][0]);
             audioObjects[i][1] = 0;
             eval(audioObjects[i][0]).stop();
+            eval(audioObjects[i][0]).volume(0.5);
+
+            // remove the stop bar
+            $('#stop').addClass('hide').removeClass('display');
 
             // delete the element from the playing bar
             $(`#${audioObjects[i][0]}PlayingButton`).remove();
@@ -42,10 +54,22 @@ function playAudio(input) {
         console.log(audioObjects[i])
         if (audioObjects[i][0] == input) {
             if (audioObjects[i][1] == 1) {
-                // stop the playing audio
+                // stop the playing audio and reset volume
                 console.log("stopping audio: " + input);
                 audioObjects[i][1] = 0;
                 eval(input).stop();
+                eval(input).volume(0.5);
+
+                // remove stop bar
+                var stopCounter = 0;
+                for (let i = 0; i < audioObjects.length; i++) {
+                    if (audioObjects[i][1] == 1) {
+                        stopCounter++;
+                    }
+                }
+                if (stopCounter == 0) {
+                    $('#stop').addClass('hide').removeClass('display');
+                }
 
                 // delete the element from the playing bar
                 $(`#${input}PlayingButton`).remove();
@@ -64,8 +88,11 @@ function playAudio(input) {
                 var playingAudio = $(`<div id='${input}PlayingDiv' class='playing-row'><button class='playing-audio-box' id='${input}PlayingButton' onclick='play("${input}")'><i class='play-icon fa-solid fa-stop'></i> ${input}</button></div>`);
                 $('#playingAudioColumn').append(playingAudio);
 
-                // TODO: add volume bars
-                var volumeBar = $(`<button id='${input}VolumeBar' class='volume-button'>&nbsp;</button>`)
+                // show stop audio bar
+                $('#stop').addClass('display').removeClass('hide');
+
+                // add volume bars
+                var volumeBar = $(`<button id='${input}VolumeBar' class='volume-button' onclick='volumeController("${input}")'><i id='${input}VolumeIcon'class="fa-solid fa-volume-low"></i></button>`)
                 $("#" + input + "PlayingDiv").append(volumeBar);
 
                 // change play icon to stop icon
@@ -86,11 +113,27 @@ function play(input) {
     }
 }
 
+function volumeController(input) {
+    console.log(`volume input from${input}`);
+    if (eval(input).volume() == 0.5) {
+        eval(input).volume(1);
+        $(`#${input}VolumeBar`).addClass('volume-clicked');
+        $(`#${input}VolumeIcon`).addClass('fa-volume-high').removeClass('fa-volume-low');
+    } else if (eval(input).volume() == 1) {
+        eval(input).volume(0.5);
+        $(`#${input}VolumeBar`).removeClass('volume-clicked');
+        $(`#${input}VolumeIcon`).addClass('fa-volume-low').removeClass('fa-volume-high');
+    }
+    console.log(eval(input).volume());
+}
+
 function dropdown(column) {
-    if ($('#' + column).is(":visible")) {
-        $('#' + column).css('display', 'none');
+    if ($('#column' + column).is(":visible")) {
+        $('#column' + column).css('display', 'none');
+        $('#dropdownIcon' + column).addClass('fa-caret-right').removeClass('fa-caret-down');
     } else {
-        $('#' + column).css('display', 'block');
+        $('#column' + column).css('display', 'block');
+        $('#dropdownIcon' + column).addClass('fa-caret-down').removeClass('fa-caret-right');
     }
 }
 
@@ -123,20 +166,20 @@ window.onload = function(e) {
 
     // dropdowns
     $('#dropdown1').click(function (e) { 
-        dropdown('column1');
+        dropdown('1');
     });
     $('#dropdown2').click(function (e) { 
-        dropdown('column2');
+        dropdown('2');
     });
     $('#dropdown3').click(function (e) { 
-        dropdown('column3');
+        dropdown('3');
     });
 
     // buttons
     $('#indexButton').click(function (e) { 
-        location.href = './';
+        location.href = '/';
     });
-    $('#getURL').click(function (e) { 
-        console.log(window.location.href);
+    $('#loginButton').click(function (e) { 
+        location.href = '/login';
     });
 }
